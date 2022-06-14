@@ -1,0 +1,80 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+.calculator {
+    display: flex;
+    width: 360px;
+    flex-direction: column;
+}
+
+.display {
+    width: 360px;
+    height: 120px;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 48px;
+    font-weight: bold;
+    border-radius: 10px 10px 0px 0px;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.numbers-operators {
+    width: 360px;
+    height: 450px;
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+}
+
+.white-button, .blue-button, .gray-button, .zero {
+    height: 90px;
+    width: 90px;
+    border: 1px solid gray;
+    box-sizing: border-box;
+}
+
+.zero {
+    width: 180px;
+    border-bottom: 2px solid gray;
+    border-radius: 0px 0px 0px 10px;
+}
+
+.clear, .seven, .four, .one, .zero {
+    border-left: 2px solid gray;
+}
+
+.point, .equals {
+    border-bottom: 2px solid gray;
+}
+
+.divide, .multiply, .subtract, .add, .equals {
+    border-right: 2px solid gray;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+.equals {
+    border-radius: 0px 0px 10px 0px;
+}
+
+.subtract {
+    font-size: 32px;
+}
