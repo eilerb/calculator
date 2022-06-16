@@ -87,8 +87,17 @@ function removeMinusSign() {
 
 const backspaceBtn = document.querySelector('.backspace');
 backspaceBtn.addEventListener('click', () => {
-    if ((display.textContent.length > 0)) {
-        display.textContent = displayText.slice(0, displayText.length-1);
+    //if ((display.textContent.length > 0)) {
+    display.textContent = displayText.slice(0, displayText.length - 1);
+    displayText = display.textContent;
+    firstNumber = ~~displayText;
+    //}
+});
+
+const pointBtn = document.querySelector('.point');
+pointBtn.addEventListener('click', () => {
+    if (displayText.indexOf('.') === -1) {
+        display.textContent = `${displayText}.`;
         displayText = display.textContent;
         firstNumber = ~~displayText;
     }
