@@ -58,9 +58,7 @@ numberButtonsArray.forEach(numberButton => {
 const clearBtn = document.querySelector('.clear');
 clearBtn.addEventListener('click', () => {
     display.textContent = '';
-    numberLength = display.textContent.length;
-    displayText = display.textContent;
-    firstNumber = ~~displayText;
+    firstNumberUpdate();
     //console.log(numberLength);
     //console.log(firstNumber);
 });
@@ -71,18 +69,14 @@ plusMinusBtn.addEventListener('click', minusSign);
 
 function minusSign() {
     display.textContent = `-${displayText}`;
-    displayText = display.textContent;
-    firstNumber = ~~displayText;
-    numberLength = display.textContent.length;
+    firstNumberUpdate();
     plusMinusBtn.removeEventListener('click', minusSign)
     plusMinusBtn.addEventListener('click', removeMinusSign);
 }
 
 function removeMinusSign() {
     display.textContent = displayText.replace('-', '');
-    displayText = display.textContent;
-    firstNumber = ~~displayText;
-    numberLength = display.textContent.length;
+    firstNumberUpdate();
     plusMinusBtn.removeEventListener('click', removeMinusSign);
     plusMinusBtn.addEventListener('click', minusSign);
 }
@@ -91,9 +85,7 @@ const backspaceBtn = document.querySelector('.backspace');
 backspaceBtn.addEventListener('click', () => {
     //if ((display.textContent.length > 0)) {
     display.textContent = displayText.slice(0, displayText.length - 1);
-    displayText = display.textContent;
-    firstNumber = ~~displayText;
-    numberLength = display.textContent.length;
+    firstNumberUpdate();
     //}
 });
 
@@ -101,11 +93,12 @@ const pointBtn = document.querySelector('.point');
 pointBtn.addEventListener('click', () => {
     if (displayText.indexOf('.') === -1 && numberLength < 9) {
         display.textContent = `${displayText}.`;
-        displayText = display.textContent;
-        firstNumber = ~~displayText;
-        numberLength = display.textContent.length;
+        firstNumberUpdate();
     }
 });
 
-
-// TODO Fix numberLength updates
+function firstNumberUpdate() {
+    displayText = display.textContent;
+    firstNumber = ~~displayText;
+    numberLength = display.textContent.length;
+}
