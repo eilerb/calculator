@@ -73,6 +73,7 @@ function minusSign() {
     display.textContent = `-${displayText}`;
     displayText = display.textContent;
     firstNumber = ~~displayText;
+    numberLength = display.textContent.length;
     plusMinusBtn.removeEventListener('click', minusSign)
     plusMinusBtn.addEventListener('click', removeMinusSign);
 }
@@ -81,6 +82,7 @@ function removeMinusSign() {
     display.textContent = displayText.replace('-', '');
     displayText = display.textContent;
     firstNumber = ~~displayText;
+    numberLength = display.textContent.length;
     plusMinusBtn.removeEventListener('click', removeMinusSign);
     plusMinusBtn.addEventListener('click', minusSign);
 }
@@ -91,14 +93,19 @@ backspaceBtn.addEventListener('click', () => {
     display.textContent = displayText.slice(0, displayText.length - 1);
     displayText = display.textContent;
     firstNumber = ~~displayText;
+    numberLength = display.textContent.length;
     //}
 });
 
 const pointBtn = document.querySelector('.point');
 pointBtn.addEventListener('click', () => {
-    if (displayText.indexOf('.') === -1) {
+    if (displayText.indexOf('.') === -1 && numberLength < 9) {
         display.textContent = `${displayText}.`;
         displayText = display.textContent;
         firstNumber = ~~displayText;
+        numberLength = display.textContent.length;
     }
 });
+
+
+// TODO Fix numberLength updates
