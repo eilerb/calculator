@@ -34,11 +34,11 @@ let displayText = '';
 console.log(displayText);
 
 // Number button functionality
-const buttons = document.querySelectorAll('.number');
-buttonsArray = [...buttons];
+const numberButtons = document.querySelectorAll('.number');
+numberButtonsArray = [...numberButtons];
 let numberLength = 0;
-console.log(buttonsArray);
-buttonsArray.forEach(numberButton => {
+//console.log(numberButtonsArray);
+numberButtonsArray.forEach(numberButton => {
     numberButton.addEventListener('click', () => {
         if (numberLength < 10) {
             display.textContent += numberButton.textContent;
@@ -52,7 +52,6 @@ buttonsArray.forEach(numberButton => {
 })
 
 
-// Clear button
 const clearBtn = document.querySelector('.clear');
 clearBtn.addEventListener('click', () => {
     display.textContent = '';
@@ -61,23 +60,27 @@ clearBtn.addEventListener('click', () => {
     //console.log(numberLength);
 });
 
-// Plus/Minus button
-const plusMinus = document.querySelector('.change-sign');
+const plusMinusBtn = document.querySelector('.change-sign');
 let changed = 'plus';
-plusMinus.addEventListener('click', minusSign);
+plusMinusBtn.addEventListener('click', minusSign);
 
 function minusSign() {
-    display.textContent =`-${displayText}`;
+    display.textContent = `-${displayText}`;
     displayText = display.textContent;
-    plusMinus.removeEventListener('click', minusSign)
-    plusMinus.addEventListener('click', removeMinusSign);
+    plusMinusBtn.removeEventListener('click', minusSign)
+    plusMinusBtn.addEventListener('click', removeMinusSign);
 }
 
 function removeMinusSign() {
     display.textContent = displayText.replace('-', '');
     displayText = display.textContent;
-    plusMinus.removeEventListener('click', removeMinusSign);
-    plusMinus.addEventListener('click', minusSign);
+    plusMinusBtn.removeEventListener('click', removeMinusSign);
+    plusMinusBtn.addEventListener('click', minusSign);
 }
 
-
+const percentBtn = document.querySelector('.percent');
+percentBtn.addEventListener('click', () => {
+    if ((display.textContent.length > 0)) {
+        display.textContent = `${displayText}%`;
+    }
+});
