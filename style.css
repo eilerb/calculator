@@ -64,7 +64,7 @@ body {
     border-right: 2px solid gray;
 }
 
-.button {
+button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,5 +76,17 @@ body {
 }
 
 .subtract {
-    font-size: 32px;
+    font-size: 24px;
+}
+
+.white-button {
+    background-color: #FDF4DC;
+}
+
+.gray-button {
+    background-color: #DED0C4 ;
+}
+
+.blue-button {
+    background-color: #FEC47F;
 }
