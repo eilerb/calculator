@@ -85,9 +85,11 @@ function removeMinusSign() {
     plusMinusBtn.addEventListener('click', minusSign);
 }
 
-const percentBtn = document.querySelector('.percent');
-percentBtn.addEventListener('click', () => {
+const backspaceBtn = document.querySelector('.backspace');
+backspaceBtn.addEventListener('click', () => {
     if ((display.textContent.length > 0)) {
-        display.textContent = `${displayText}%`;
+        display.textContent = displayText.slice(0, displayText.length-1);
+        displayText = display.textContent;
+        firstNumber = ~~displayText;
     }
 });
