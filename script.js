@@ -37,6 +37,7 @@ console.log(displayText);
 const numberButtons = document.querySelectorAll('.number');
 numberButtonsArray = [...numberButtons];
 let numberLength = 0;
+let firstNumber = 0;
 //console.log(numberButtonsArray);
 numberButtonsArray.forEach(numberButton => {
     numberButton.addEventListener('click', () => {
@@ -47,7 +48,9 @@ numberButtonsArray.forEach(numberButton => {
         }
 
         displayText = display.textContent;
+        firstNumber = ~~displayText;
         //console.log(displayText);
+        //console.log(firstNumber);
     })
 })
 
@@ -57,7 +60,9 @@ clearBtn.addEventListener('click', () => {
     display.textContent = '';
     numberLength = display.textContent.length;
     displayText = display.textContent;
+    firstNumber = ~~displayText;
     //console.log(numberLength);
+    //console.log(firstNumber);
 });
 
 const plusMinusBtn = document.querySelector('.change-sign');
@@ -67,6 +72,7 @@ plusMinusBtn.addEventListener('click', minusSign);
 function minusSign() {
     display.textContent = `-${displayText}`;
     displayText = display.textContent;
+    firstNumber = ~~displayText;
     plusMinusBtn.removeEventListener('click', minusSign)
     plusMinusBtn.addEventListener('click', removeMinusSign);
 }
@@ -74,6 +80,7 @@ function minusSign() {
 function removeMinusSign() {
     display.textContent = displayText.replace('-', '');
     displayText = display.textContent;
+    firstNumber = ~~displayText;
     plusMinusBtn.removeEventListener('click', removeMinusSign);
     plusMinusBtn.addEventListener('click', minusSign);
 }
