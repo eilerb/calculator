@@ -11,19 +11,19 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    return a/b;
+    return a / b;
 }
 
 function operate(operator, a, b) {
     if (operator === 'add') {
         add(a, b);
-    } else if (operator === 'subtract'){
+    } else if (operator === 'subtract') {
         subtract(a, b);
     } else if (operator === 'multiply') {
         multiply(a, b);
     } else if (operator === 'divide') {
         divide(a, b);
-        }
+    }
 }
 
 const display = document.querySelector('.display');
@@ -38,13 +38,14 @@ const buttons = document.querySelectorAll('.number');
 buttonsArray = [...buttons];
 let numberLength = 0;
 console.log(buttonsArray);
-buttonsArray.forEach(button => {
-    button.addEventListener('click', () => {
+buttonsArray.forEach(numberButton => {
+    numberButton.addEventListener('click', () => {
         if (numberLength < 10) {
-            display.textContent += button.textContent;
+            display.textContent += numberButton.textContent;
+            numberLength++;
+            console.log(numberLength);
         }
-        
-        numberLength++;
+
         displayText = display.textContent;
         //console.log(displayText);
     })
@@ -54,7 +55,8 @@ buttonsArray.forEach(button => {
 // Clear button
 const clearBtn = document.querySelector('.clear');
 clearBtn.addEventListener('click', () => {
-    displayText.slice(displayText.length-1);
-    console.log(displayText);
-    display.textContent = displayText;
+    display.textContent = displayText.slice(0, displayText.length - 1);
+    numberLength = display.textContent.length;
+    displayText = display.textContent;
+    //console.log(numberLength);
 });
