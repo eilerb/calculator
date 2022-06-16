@@ -55,8 +55,29 @@ buttonsArray.forEach(numberButton => {
 // Clear button
 const clearBtn = document.querySelector('.clear');
 clearBtn.addEventListener('click', () => {
-    display.textContent = displayText.slice(0, displayText.length - 1);
+    display.textContent = '';
     numberLength = display.textContent.length;
     displayText = display.textContent;
     //console.log(numberLength);
 });
+
+// Plus/Minus button
+const plusMinus = document.querySelector('.change-sign');
+let changed = 'plus';
+plusMinus.addEventListener('click', minusSign);
+
+function minusSign() {
+    display.textContent =`-${displayText}`;
+    displayText = display.textContent;
+    plusMinus.removeEventListener('click', minusSign)
+    plusMinus.addEventListener('click', removeMinusSign);
+}
+
+function removeMinusSign() {
+    display.textContent = displayText.replace('-', '');
+    displayText = display.textContent;
+    plusMinus.removeEventListener('click', removeMinusSign);
+    plusMinus.addEventListener('click', minusSign);
+}
+
+
