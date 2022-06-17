@@ -5,6 +5,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
+    background-color: #292421;
 }
 
 .calculator {
@@ -26,6 +27,9 @@ body {
     border-radius: 10px 10px 0px 0px;
     box-sizing: border-box;
     padding: 20px;
+    border-top: 1px solid gray;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
 }
 
 .numbers-operators {
@@ -39,7 +43,10 @@ body {
 
 }
 
-.white-button, .blue-button, .gray-button, .zero {
+.white-button,
+.blue-button,
+.gray-button,
+.zero {
     height: 90px;
     width: 90px;
     border: 1px solid gray;
@@ -52,15 +59,24 @@ body {
     border-radius: 0px 0px 0px 10px;
 }
 
-.clear, .seven, .four, .one, .zero {
+.clear,
+.seven,
+.four,
+.one,
+.zero {
     border-left: 2px solid gray;
 }
 
-.point, .equals {
+.point,
+.equals {
     border-bottom: 2px solid gray;
 }
 
-.divide, .multiply, .subtract, .add, .equals {
+.divide,
+.multiply,
+.subtract,
+.add,
+.equals {
     border-right: 2px solid gray;
 }
 
@@ -79,12 +95,17 @@ button {
     font-size: 24px;
 }
 
+.divide,
+.white-button {
+    border-top: 2px solid gray;
+}
+
 .white-button {
     background-color: #FDF4DC;
 }
 
 .gray-button {
-    background-color: #DED0C4 ;
+    background-color: #DED0C4;
 }
 
 .blue-button {
