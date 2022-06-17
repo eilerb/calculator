@@ -117,3 +117,7 @@ button {
 .blue-button {
     background-color: #FEC47F;
 }
+
+button:active {
+    opacity: 0.75;
+}
