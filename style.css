@@ -119,6 +119,5 @@ button {
 }
 
 button:active {
-    animation-duration: 0.5s;
     opacity: 0.70;
 }
