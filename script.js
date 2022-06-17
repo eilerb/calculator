@@ -1,13 +1,13 @@
 function add(a, b) {
-    return parseFloat((a + b).toFixed());
+    return parseFloat((a + b).toFixed(8));
 }
 
 function subtract(a, b) {
-    return parseFloat((a - b).toFixed(6));
+    return parseFloat((a - b).toFixed(8));
 }
 
 function multiply(a, b) {
-    return parseFloat((a * b).toFixed(6));
+    return parseFloat((a * b).toFixed(8));
 }
 
 function divide(a, b) {
@@ -15,7 +15,7 @@ function divide(a, b) {
         alert('ERROR! Cannot divide by 0');
         return;
     }
-    return parseFloat((a / b).toFixed(6));
+    return parseFloat((a / b).toFixed(8));
 }
 
 function operate(operator, a, b) {
