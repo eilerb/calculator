@@ -11,6 +11,10 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
+    if (b === 0) {
+        alert('ERROR! Cannot divide by 0');
+        return;
+    }
     return parseFloat((a / b).toFixed(6));
 }
 
@@ -46,10 +50,8 @@ numberButtonsArray.forEach(numberButton => {
             numberLength++;
             //console.log(numberLength);
             displayText = display.textContent;
-            displayNumber = ~~displayText;
+            displayNumber = Number(displayText);
         }
-
-        
         //console.log(displayText);
         //console.log(displayNumber);
     })
@@ -103,8 +105,8 @@ pointBtn.addEventListener('click', () => {
 
 function numberUpdate() {
     displayText = display.textContent;
-    displayNumber = ~~displayText;
-    //console.log(`first number: ${displayNumber}`);
+    displayNumber = Number(displayText);
+    console.log(`first number: ${displayNumber}`);
     numberLength = display.textContent.length;
 }
 
@@ -113,10 +115,7 @@ const secondNumberObj = {};
 
 const divideBtn = document.querySelector('.divide');
 divideBtn.addEventListener('click', () => {
-    if (firstNumberObj.number === undefined) {
-        operation('divide');
-    }
-    
+    operation('divide');
     //console.log(`fist number -> ${displayNumber}`);
     //console.log(firstNumberObj.number);
     numberUpdate();
@@ -151,19 +150,19 @@ let result = '';
 equalsBtn.addEventListener('click', () => {
     //if (numberLength > 0 && displayText !== '-') {
         secondNumberObj.number = displayNumber;
-        console.log(displayNumber);
+        //console.log(displayNumber);
         let operator = firstNumberObj.operator 
         let firstNumber = firstNumberObj.number;
-        console.log(firstNumber);
+        //console.log(firstNumber);
         let secondNumber = secondNumberObj.number;
-        console.log(secondNumber);
-        console.log(operator);
-        let result = operate(operator, 8, 2);
+        //console.log(secondNumber);
+        //console.log(operator);
+        let result = operate(operator, Number(firstNumber), Number(secondNumber));
         //let result = firstNumber / secondNumber;
-        console.log(result);
+        //console.log(result);
         displayText = result.toString();
         display.textContent = displayText;
-        displayNumber = ~~displayText;
+        displayNumber = Number(displayText);
         numberLength = display.textContent.length;
     //}
 });
