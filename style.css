@@ -1,7 +1,7 @@
-@font-face{
-    font-family:'digital-clock-font';
+@font-face {
+    font-family: 'digital-clock-font';
     src: url('digital.ttf');
-   }
+}
 
 body {
     display: flex;
@@ -11,7 +11,7 @@ body {
     padding: 0;
     height: 100vh;
     background-color: #CDAF95;
-    font-family:'digital-clock-font';
+    font-family: 'digital-clock-font';
 }
 
 .calculator {
@@ -36,7 +36,6 @@ body {
     border-top: 1px solid gray;
     border-left: 1px solid gray;
     border-right: 1px solid gray;
-    /*font-family:'digital-clock-font';*/
 }
 
 .numbers-operators {
