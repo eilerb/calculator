@@ -32,7 +32,7 @@ body {
     font-weight: bold;
     border-radius: 10px 10px 0px 0px;
     box-sizing: border-box;
-    padding: 20px;
+    padding: 10px;
     border-top: 1px solid gray;
     border-left: 1px solid gray;
     border-right: 1px solid gray;
@@ -119,5 +119,5 @@ button {
 }
 
 button:active {
-    opacity: 0.75;
+    opacity: 0.70;
 }
