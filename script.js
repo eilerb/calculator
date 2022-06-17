@@ -1,5 +1,5 @@
 function add(a, b) {
-    return parseFloat((a + b).toFixed(6));
+    return parseFloat((a + b).toFixed());
 }
 
 function subtract(a, b) {
@@ -32,28 +32,20 @@ function operate(operator, a, b) {
 
 const display = document.querySelector('.display');
 let displayText = '';
-//console.log(display.textContent);
-//display.textContent = '1';
-//console.log(display.textContent);
-//console.log(displayText);
 
-// Number button functionality
 const numberButtons = document.querySelectorAll('.number');
 numberButtonsArray = [...numberButtons];
 let numberLength = 0;
 let displayNumber = 0;
-//console.log(numberButtonsArray);
+
 numberButtonsArray.forEach(numberButton => {
     numberButton.addEventListener('click', () => {
         if (numberLength < 10) {
             display.textContent += numberButton.textContent;
             numberLength++;
-            //console.log(numberLength);
             displayText = display.textContent;
             displayNumber = Number(displayText);
         }
-        //console.log(displayText);
-        //console.log(displayNumber);
     })
 })
 
@@ -65,8 +57,6 @@ clearBtn.addEventListener('click', () => {
     firstNumberObj.operator = undefined;
     secondNumberObj.number = undefined;
     numberUpdate();
-    //console.log(numberLength);
-    //console.log(displayNumber);
 });
 
 const plusMinusBtn = document.querySelector('.change-sign');
@@ -89,10 +79,8 @@ function removeMinusSign() {
 
 const backspaceBtn = document.querySelector('.backspace');
 backspaceBtn.addEventListener('click', () => {
-    //if ((display.textContent.length > 0)) {
     display.textContent = displayText.slice(0, displayText.length - 1);
     numberUpdate();
-    //}
 });
 
 const pointBtn = document.querySelector('.point');
@@ -106,7 +94,6 @@ pointBtn.addEventListener('click', () => {
 function numberUpdate() {
     displayText = display.textContent;
     displayNumber = Number(displayText);
-    console.log(`first number: ${displayNumber}`);
     numberLength = display.textContent.length;
 }
 
@@ -116,8 +103,6 @@ const secondNumberObj = {};
 const divideBtn = document.querySelector('.divide');
 divideBtn.addEventListener('click', () => {
     operation('divide');
-    //console.log(`fist number -> ${displayNumber}`);
-    //console.log(firstNumberObj.number);
     numberUpdate();
 });
 
@@ -131,7 +116,7 @@ const subtractBtn = document.querySelector('.subtract');
 subtractBtn.addEventListener('click', () => {
     operation('subtract');
     numberUpdate();
-});  
+});
 
 const addBtn = document.querySelector('.add');
 addBtn.addEventListener('click', () => {
@@ -148,21 +133,13 @@ function operation(operator) {
 const equalsBtn = document.querySelector('.equals');
 let result = '';
 equalsBtn.addEventListener('click', () => {
-    //if (numberLength > 0 && displayText !== '-') {
-        secondNumberObj.number = displayNumber;
-        //console.log(displayNumber);
-        let operator = firstNumberObj.operator 
-        let firstNumber = firstNumberObj.number;
-        //console.log(firstNumber);
-        let secondNumber = secondNumberObj.number;
-        //console.log(secondNumber);
-        //console.log(operator);
-        let result = operate(operator, Number(firstNumber), Number(secondNumber));
-        //let result = firstNumber / secondNumber;
-        //console.log(result);
-        displayText = result.toString();
-        display.textContent = displayText;
-        displayNumber = Number(displayText);
-        numberLength = display.textContent.length;
-    //}
+    secondNumberObj.number = displayNumber;
+    let operator = firstNumberObj.operator
+    let firstNumber = firstNumberObj.number;
+    let secondNumber = secondNumberObj.number;
+    let result = operate(operator, Number(firstNumber), Number(secondNumber));
+    displayText = result.toString();
+    display.textContent = displayText;
+    displayNumber = Number(displayText);
+    numberLength = display.textContent.length;
 });
