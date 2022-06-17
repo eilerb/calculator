@@ -5,7 +5,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    background-color: #292421;
+    background-color: #CDAF95;
 }
 
 .calculator {
@@ -21,7 +21,7 @@ body {
     color: white;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
+    align-items: flex-end;
     font-size: 48px;
     font-weight: bold;
     border-radius: 10px 10px 0px 0px;
