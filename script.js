@@ -52,18 +52,16 @@ numberButtonsArray.forEach(numberButton => {
 
 const clearBtn = document.querySelector('.clear');
 clearBtn.addEventListener('click', () => {
-    display.textContent = '';
-    firstNumberObj.number = undefined;
-    firstNumberObj.operator = undefined;
-    secondNumberObj.number = undefined;
-    numberUpdate();
+    clear();
 });
 
 const plusMinusBtn = document.querySelector('.change-sign');
 plusMinusBtn.addEventListener('click', minusSign);
 
 function minusSign() {
-    display.textContent = `-${displayText}`;
+    if (numberLength < 10) {
+        display.textContent = `-${displayText}`;
+    }
     numberUpdate();
     plusMinusBtn.removeEventListener('click', minusSign)
     plusMinusBtn.addEventListener('click', removeMinusSign);
@@ -84,10 +82,7 @@ backspaceBtn.addEventListener('click', () => {
 
 const pointBtn = document.querySelector('.point');
 pointBtn.addEventListener('click', () => {
-    if (displayText.indexOf('.') === -1 && numberLength < 9) {
-        display.textContent = `${displayText}.`;
-        numberUpdate();
-    }
+    point();
 });
 
 function numberUpdate() {
@@ -131,6 +126,53 @@ function operation(operator) {
 
 const equalsBtn = document.querySelector('.equals');
 equalsBtn.addEventListener('click', () => {
+    equals();
+});
+
+const dataKeys = numberButtonsArray.map(number => number.getAttribute('data-key'));
+
+document.addEventListener('keydown', (event) => {
+    let name = event.key;
+    name = name.toLowerCase();
+
+    if (dataKeys.indexOf(name) !== -1 && numberLength < 10) {
+        displayText = name;
+        display.textContent += displayText;
+        numberUpdate();
+        console.log(numberLength);
+    } else if (name === 'c') {
+        clear();
+    } else if (name === 'backspace') {
+        display.textContent = displayText.slice(0, displayText.length - 1);
+        numberUpdate();
+    } else if (name === '/') {
+        operation('divide');
+        numberUpdate();
+    } else if (name === '*') {
+        operation('multiply');
+        numberUpdate();
+    } else if (name === '-') {
+        operation('subtract');
+        numberUpdate();
+    } else if (name === '+') {
+        operation('add');
+        numberUpdate();
+    } else if (name === '=' || name === 'enter') {
+        equals();
+    } else if (name === '.') {
+        point();
+    }
+});
+
+
+function point() {
+    if (displayText.indexOf('.') === -1 && numberLength < 9) {
+        display.textContent = `${displayText}.`;
+        numberUpdate();
+    }
+}
+
+function equals() {
     secondNumberObj.number = displayNumber;
     let operator = firstNumberObj.operator
     let firstNumber = firstNumberObj.number;
@@ -140,4 +182,12 @@ equalsBtn.addEventListener('click', () => {
     display.textContent = displayText;
     displayNumber = Number(displayText);
     numberLength = display.textContent.length;
-});
+}
+
+function clear() {
+    display.textContent = '';
+    firstNumberObj.number = undefined;
+    firstNumberObj.operator = undefined;
+    secondNumberObj.number = undefined;
+    numberUpdate();
+}
