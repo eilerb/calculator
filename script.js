@@ -60,7 +60,6 @@ clearBtn.addEventListener('click', () => {
 });
 
 const plusMinusBtn = document.querySelector('.change-sign');
-let changed = 'plus';
 plusMinusBtn.addEventListener('click', minusSign);
 
 function minusSign() {
@@ -131,7 +130,6 @@ function operation(operator) {
 }
 
 const equalsBtn = document.querySelector('.equals');
-let result = '';
 equalsBtn.addEventListener('click', () => {
     secondNumberObj.number = displayNumber;
     let operator = firstNumberObj.operator
